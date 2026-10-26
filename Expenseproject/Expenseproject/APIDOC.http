@@ -1,0 +1,121 @@
+#API call to create user
+###
+POST http://127.0.0.1:8000/user
+Content-Type: application/json
+
+{
+    "username":"admin2",
+    "email":"admin2@gmail.com",
+    "password":"admin2"
+}
+
+
+# API call to create expense
+###
+POST http://127.0.0.1:8000/expense
+Authorization: Basic admin2:admin2
+Content-Type: application/json
+
+{
+    "title": "Water Bill",
+    "amount": "350.00",
+    "category": "bill",
+    "payment": "card"
+}
+
+# API call for listing all expenses
+###
+GET  http://127.0.0.1:8000/expense
+Authorization: Basic admin2:admin2
+
+# API call for listing by id
+###
+GET  http://127.0.0.1:8000/detail/10
+Authorization: Basic admin:admin
+
+# API call for update
+###
+PUT http://127.0.0.1:8000/detail/4
+Authorization: Basic admin:admin
+Content-Type: application/json
+
+{
+  "id": 4,
+  "title": "Grocery Shopping",
+  "amount": "1850.00",
+  "created_at": "2026-10-26T21:19:34.238663Z",
+  "category": "food",
+  "payment": "card",
+  "owner": 1
+}
+
+
+# API call for delete
+###
+DELETE http://127.0.0.1:8000/detail/5
+Authorization: Basic admin:admin
+
+#API call to get filtered as category or payment
+
+###
+GET http://127.0.0.1:8000/expense?category=food
+Authorization: Basic admin:admin
+
+###
+GET http://127.0.0.1:8000/expense?category=fuel
+Authorization: Basic admin:admin
+
+###
+GET http://127.0.0.1:8000/expense?category=bill
+Authorization: Basic admin:admin
+
+###
+GET http://127.0.0.1:8000/expense?category=food
+Authorization: Basic admin2:admin2
+
+###
+GET http://127.0.0.1:8000/expense?category=fuel
+Authorization: Basic admin2:admin2
+
+###
+GET http://127.0.0.1:8000/expense?category=bill
+Authorization: Basic admin2:admin2
+
+###
+GET http://127.0.0.1:8000/expense?category=bill&payment=card
+Authorization: Basic admin2:admin2
+
+
+###
+GET http://127.0.0.1:8000/expense?category=bill&payment=card
+Authorization: Basic admin:admin
+
+# search 
+
+###
+GET http://127.0.0.1:8000/expense?search=petrol
+Authorization: Basic admin:admin
+
+
+###
+GET http://127.0.0.1:8000/expense?category=fuel&search=Bike Maintenance
+Authorization: Basic admin2:admin2
+
+
+# --------------ordering-------------
+###
+GET http://127.0.0.1:8000/expense?ordering=amount
+Authorization: Basic admin2:admin2
+
+###
+GET http://127.0.0.1:8000/expense?ordering=-amount
+Authorization: Basic admin2:admin2
+
+###
+GET http://127.0.0.1:8000/expense?ordering=created_at
+Authorization: Basic admin:admin
+
+###
+GET http://127.0.0.1:8000/expense?ordering=-created_at
+Authorization: Basic admin:admin
+
